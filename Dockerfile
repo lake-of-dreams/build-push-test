@@ -1,5 +1,5 @@
 # Step #1 Run unit tests and build an executable that doesn't require the go libs
-FROM golang as firststage
+FROM oracle/serverjre:8 as firststage
 WORKDIR /work
 ADD . .
 RUN go test ./...
