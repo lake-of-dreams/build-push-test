@@ -1,5 +1,5 @@
 # Step #1 Run unit tests and build an executable that doesn't require the go libs
-FROM ravisinghal/golang as firststage
+FROM golang as firststage
 WORKDIR /work
 ADD . .
 RUN go test ./...
@@ -13,7 +13,7 @@ ARG foo
 ARG bar
 ENV foo=${foo}
 ENV bar=${bar}
-RUN apk --no-cache add ca-certificates
+RUN yum --no-cache add ca-certificates
 WORKDIR /root/
 COPY --from=firststage /work/myapp .
 CMD ["./myapp"]  
