@@ -4,9 +4,9 @@ build:
     - script:
         name: check service
         code: |
-          export TAG_NAME=$( echo "$WERCKER_GIT_BRANCH" | tr 'm' 'p')
+          export TAG_NAME=$( echo "$WERCKER_GIT_BRANCH" | tr '/' 'allowed_char')
     - internal/docker-push:
-        repository: ravisinghal/check
+        repository: $REPO
         username: $USERNAME
         password: $PASSWORD
         tag: $TAG_NAME
