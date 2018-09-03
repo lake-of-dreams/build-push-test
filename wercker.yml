@@ -9,4 +9,4 @@ build:
         repository: $REPO
         username: $USERNAME
         password: $PASSWORD
-        tag: $WERCKER_GIT_BRANCH
+        tag: $TAG_NAME
