@@ -2,9 +2,9 @@ build:
   box: golang
   steps:
     - script:
-        name: check service
+        name: replace / with $
         code: |
-          export TAG_NAME=$( echo "$WERCKER_GIT_BRANCH" | tr '/' 'allowed_char')
+          export TAG_NAME=$( echo "$WERCKER_GIT_BRANCH" | tr '/' '$')
     - internal/docker-push:
         repository: $REPO
         username: $USERNAME
