@@ -1,7 +1,12 @@
 build:
   box: golang
   steps:
+    - script:
+        name: check service
+        code: |
+          export TAG_NAME=$( echo "$WERCKER_GIT_BRANCH" | tr 'm' 'p')
     - internal/docker-push:
         repository: ravisinghal/check
         username: $USERNAME
         password: $PASSWORD
+        tag: $TAG_NAME
