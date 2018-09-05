@@ -17,4 +17,5 @@ deploy:
           ls -lahrt
     - internal/docker-build:
         dockerfile: Dockerfile
+        image-name: test
         
