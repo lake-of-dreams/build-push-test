@@ -2,11 +2,18 @@ build:
   box: golang
   steps:
     - script:
-        name: check service
+        name: mkdir and copy
         code: |
-          export TAG_NAME=$( echo "$WERCKER_GIT_BRANCH" | tr 'm' 'p')
-    - internal/docker-push:
-        repository: ravisinghal/check
-        username: $USERNAME
-        password: $PASSWORD
-        tag: $TAG_NAME
+          mkdir test
+          cp $WERCKER_SOURCE_DIR/*.go test/.
+          cp $WERCKER_SOURCE_DIR/Dockerfile test/.
+          cp test/* $WERCKER_OUTPUT_DIR/.
+deploy:
+  steps:
+    - script:
+        name: ls
+        code: |
+          ls -lahrt
+    - internal/docker-build:
+        dockerfile: Dockerfile
+        
