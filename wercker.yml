@@ -9,6 +9,7 @@ build:
           cp $WERCKER_SOURCE_DIR/Dockerfile test/.
           cp test/* $WERCKER_OUTPUT_DIR/.
 deploy:
+  box: golang
   steps:
     - script:
         name: ls
