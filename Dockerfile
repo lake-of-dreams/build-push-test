@@ -13,7 +13,7 @@ ARG foo
 ARG bar
 ENV foo=${foo}
 ENV bar=${bar}
-RUN yum --no-cache add ca-certificates
+RUN apk --no-cache add ca-certificates
 WORKDIR /root/
 COPY --from=firststage /work/myapp .
 CMD ["./myapp"]  

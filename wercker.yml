@@ -2,20 +2,16 @@ build:
   box: golang
   steps:
     - script:
-        name: mkdir and copy
-        code: |
-          mkdir test
-          cp $WERCKER_SOURCE_DIR/*.go test/.
-          cp $WERCKER_SOURCE_DIR/Dockerfile test/.
-          cp test/* $WERCKER_OUTPUT_DIR/.
-deploy:
-  box: golang
-  steps:
-    - script:
         name: ls
         code: |
           ls -lahrt
-    - internal/docker-build:
-        dockerfile: Dockerfile
-        image-name: test
+    #- internal/docker-build:
+     #   dockerfile: Dockerfile
+      #  image-name: test
+    - internal/docker-push:
+        repository: $REPO
+       # image-name: $IMAGE_NAME
+        username: $USERNAME
+        password: $PASSWORD
+        tag: $TAGS     
         
