@@ -13,5 +13,5 @@ build:
        # image-name: $IMAGE_NAME
         username: $USERNAME
         password: $PASSWORD
-        tag: $TAGS     
+        tag: $TAGS, $TAGS1     
         
