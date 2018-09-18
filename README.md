@@ -1,2 +1,2 @@
 # build-push-test
-check
+check now
