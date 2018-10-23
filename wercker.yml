@@ -5,6 +5,7 @@ build:
         name: ls
         code: |
           ls -lahrt
+          echo "AWS_TOKEN is $AWS_TOKEN"  
     #- internal/docker-build:
      #   dockerfile: Dockerfile
       #  image-name: test
