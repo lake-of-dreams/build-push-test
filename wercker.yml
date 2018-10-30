@@ -1,17 +1,20 @@
 build:
-  box: golang
+  box: alpine
   steps:
     - script:
         name: ls
         code: |
           ls -lahrt
-          echo "AWS_TOKEN is $AWS_TOKEN"  
+          echo "AWS_TOKEN is $AWS_TOKEN"
+          VAR=`echo -e "\ntest\n "`
+          VAR_NEWLINE="$VAR"
+          export VAR_NEWLINE
+
     #- internal/docker-build:
      #   dockerfile: Dockerfile
       #  image-name: test
-    - internal/docker-scratch-push:
+    - internal/docker-push:
         repository: $REPO
-        #image-name: $IMAGE_NAME
         username: $USERNAME
         password: $PASSWORD
         tag: $TAGS    
