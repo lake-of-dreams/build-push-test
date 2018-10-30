@@ -1,5 +1,5 @@
 build:
-  box: alpine
+  box: golang
   steps:
     - script:
         name: ls
