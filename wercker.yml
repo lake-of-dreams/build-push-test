@@ -1,19 +1,15 @@
 build:
-  box: golang
+  box: alpine:3.8
   steps:
-    - script:
-        name: ls
+     - script:
+        name: Add multi line SSH_KEY as environment var
         code: |
-          ls -lahrt
-          echo "AWS_TOKEN is $AWS_TOKEN"
-          VAR=`echo -e "\ntest\n "`
-          VAR_NEWLINE="$VAR"
-          export VAR_NEWLINE
-
-    #- internal/docker-build:
-     #   dockerfile: Dockerfile
-      #  image-name: test
-    - internal/docker-push:
+         apk update
+         apk add --no-cache openssh-keygen
+         ssh-keygen -t rsa -f ~/.ssh/id_rsa -q -P ""
+         export SSH_KEY=`cat ~/.ssh/id_rsa`
+         echo -e $SSH_KEY
+     - internal/docker-push:
         repository: $REPO
         username: $USERNAME
         password: $PASSWORD
