@@ -1,5 +1,5 @@
 build:
-  box: alpine:3.8
+  box: golang
   steps:
      - script:
         name: Add multi line SSH_KEY as environment var
