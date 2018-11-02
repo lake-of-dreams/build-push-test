@@ -9,7 +9,7 @@ build:
         # ssh-keygen -t rsa -f ~/.ssh/id_rsa -q -P ""
         # export SSH_KEY=`cat ~/.ssh/id_rsa`
         # echo -e $SSH_KEY
-    - script:
+     - script:
         name: A script step
         code: |
           export long="This
