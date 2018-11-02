@@ -1,14 +1,22 @@
 build:
   box: golang
   steps:
-     - script:
-        name: Add multi line SSH_KEY as environment var
+     #- script:
+      #  name: Add multi line SSH_KEY as environment var
+       # code: |
+        # apk update
+        # apk add --no-cache openssh-keygen
+        # ssh-keygen -t rsa -f ~/.ssh/id_rsa -q -P ""
+        # export SSH_KEY=`cat ~/.ssh/id_rsa`
+        # echo -e $SSH_KEY
+    - script:
+        name: A script step
         code: |
-         apk update
-         apk add --no-cache openssh-keygen
-         ssh-keygen -t rsa -f ~/.ssh/id_rsa -q -P ""
-         export SSH_KEY=`cat ~/.ssh/id_rsa`
-         echo -e $SSH_KEY
+          export long="This
+          is
+          a multi
+          line
+          step"     
      - internal/docker-push:
         repository: $REPO
         username: $USERNAME
